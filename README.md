@@ -10,15 +10,8 @@ This project demonstrates a complete **ETL (Extract, Transform, Load) pipeline**
 The pipeline processes banking data (customers, accounts, branches, products) and transforms it into a **Star Schema** data model optimized for analytical reporting, risk management, and business intelligence dashboards.
 
 ## 📊 Architecture
-┌─────────────┐ ┌─────────────┐ ┌─────────────┐ ┌─────────────┐
-│ CSV Data │────▶│ Bronze │────▶│ Silver │────▶│ Gold │
-│ Files │ │ (Raw) │ │ (Cleaned) │ │ (Star Schema)│
-└─────────────┘ └─────────────┘ └─────────────┘ └─────────────┘
-│ │ │ │
-│ Raw Data Cleaned & Facts &
-│ Ingestion Enriched Dimensions
-│ Data Tables
-
+CSV Files → Bronze (Raw) → Silver (Cleaned) → Gold (Star Schema)
+Raw Data Cleaned & Facts │ Ingestion Enriched Dimensions │ Data Tables
 
 ## 📂 Notebook Structure
 
