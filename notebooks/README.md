@@ -225,3 +225,10 @@ Data Dictionary: ./docs/data_dictionary.md
 
 ## 📝 License
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+
+
+⭐️ If you found this project helpful, please consider giving it a star on GitHub!
+Author: Md. Masum Howlader
+GitHub: mdmasumhowlader
+LinkedIn: md-masum-howlader
