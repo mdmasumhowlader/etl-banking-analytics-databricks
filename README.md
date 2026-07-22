@@ -10,11 +10,12 @@ This project demonstrates a complete **ETL (Extract, Transform, Load) pipeline**
 The pipeline processes banking data (customers, accounts, branches, products) and transforms it into a **Star Schema** data model optimized for analytical reporting, risk management, and business intelligence dashboards.
 
 ## 📊 Architecture
+```
 CSV Files → Bronze (Raw) → Silver (Cleaned) → Gold (Star Schema)
 Raw Data Cleaned & Facts │ Ingestion Enriched Dimensions │ Data Tables
-
+```
 ## 📂 Notebook Structure
-
+```
 The project is organized into 2 main folders in Databricks:
 📁 data_processing/ # ETL Processing & Metadata
 ├── data_loading.py # Load CSV → Bronze (Raw Data)
@@ -28,7 +29,7 @@ The project is organized into 2 main folders in Databricks:
 ├── gold_tables.sql # Create Gold layer (7 tables)
 ├── drop_silver_tables.sql # Utility: Drop all Silver tables
 └── additional_scripts.sql # Additional DDL scripts
-
+```
 ## 🔧 Key Features
 - **Medallion Architecture:** Bronze (raw), Silver (cleaned/enriched), Gold (analytics-ready)
 - **Star Schema Design:** 6 Dimension tables + 1 Fact table for investment risk analytics
@@ -38,7 +39,7 @@ The project is organized into 2 main folders in Databricks:
 - **Python/PySpark:** All transformations using PySpark DataFrames and Delta Lake
 
 ## 🔧 Catalog & Schema Structure (Unity Catalog)
-"""
+```
 inv_risk_mgmt/ # Unity Catalog
 ├── bronze/ # Raw layer (11 tables)
 │ ├── branches
@@ -72,7 +73,7 @@ inv_risk_mgmt/ # Unity Catalog
 ├── dim_financing_product
 ├── dim_industry
 └── fact_financing_account
-"""
+```
 ## 🐛 Challenges & Solutions
 
 ### Challenge 1: Date/Time Format Parsing
@@ -134,7 +135,7 @@ SELECT * FROM inv_risk_mgmt.gold.fact_financing_account LIMIT 10;
 
 
 ## 📊 Entity Relationship Diagram (ERD)
-"""
+```
 ┌─────────────────────────────────────────────────────────────────────────────────────────────┐
 │                                      Star Schema (Gold Layer)                               │
 │                                                                                             │
@@ -166,7 +167,7 @@ SELECT * FROM inv_risk_mgmt.gold.fact_financing_account LIMIT 10;
 │                            │ DESCRIPTION      │                                     │ │
 │                            └──────────────────┘                                     │ │
 └─────────────────────────────────────────────────────────────────────────────────────┘ │
-"""
+```
 
 ## 📝 Notebook Details
 1. data_loading.py (Bronze Layer)
