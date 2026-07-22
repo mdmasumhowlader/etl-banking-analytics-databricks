@@ -45,6 +45,7 @@ The project is organized into 2 main folders in Databricks:
 - **Python/PySpark:** All transformations using PySpark DataFrames and Delta Lake
 
 ## 🔧 Catalog & Schema Structure (Unity Catalog)
+"""
 inv_risk_mgmt/ # Unity Catalog
 ├── bronze/ # Raw layer (11 tables)
 │ ├── branches
@@ -78,7 +79,7 @@ inv_risk_mgmt/ # Unity Catalog
 ├── dim_financing_product
 ├── dim_industry
 └── fact_financing_account
-
+"""
 ## 🐛 Challenges & Solutions
 
 ### Challenge 1: Date/Time Format Parsing
@@ -140,6 +141,7 @@ SELECT * FROM inv_risk_mgmt.gold.fact_financing_account LIMIT 10;
 
 
 ## 📊 Entity Relationship Diagram (ERD)
+"""
 ┌─────────────────────────────────────────────────────────────────────────────────────────────┐
 │                                      Star Schema (Gold Layer)                               │
 │                                                                                             │
@@ -171,7 +173,7 @@ SELECT * FROM inv_risk_mgmt.gold.fact_financing_account LIMIT 10;
 │                            │ DESCRIPTION      │                                     │ │
 │                            └──────────────────┘                                     │ │
 └─────────────────────────────────────────────────────────────────────────────────────┘ │
-
+"""
 
 ## 📝 Notebook Details
 1. data_loading.py (Bronze Layer)
