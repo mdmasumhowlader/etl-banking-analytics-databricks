@@ -1,0 +1,6 @@
+INDUSTRY_ID,SECTOR_NAME,SUB_SECTOR_NAME,RISK_CATEGORY
+1,"Agriculture","Crop Production","Low"
+2,"Agriculture","Fish Farming","Lower"
+3,"Manufacturing","Textile & Garments","Medium"
+4,"Construction","Real Estate Development","High"
+5,"Services","Information Technology","Low"
