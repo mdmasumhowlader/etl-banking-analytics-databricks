@@ -74,107 +74,6 @@ inv_risk_mgmt/ # Unity Catalog
 ├── dim_industry
 └── fact_financing_account
 ```
-## 🐛 Challenges & Solutions
-
-### Challenge 1: Date/Time Format Parsing
-**Problem:** CSV files contained multiple date formats (`M/d/yyyy h:mm:ss a`, `M/d/yyyy h:mm:ss.SSSSSS a`).  
-**Solution:** Implemented custom timestamp parsing in `data_loading.py` using `F.to_timestamp()` with format string detection.
-
-### Challenge 2: Business Logic Centralization
-**Problem:** Business rules (NPL flag, utilization ratio, product categorization) were scattered across notebooks.  
-**Solution:** Centralized all business logic in `metadata.py` using a reusable `apply_business_logic()` function.
-
-### Challenge 3: SCD Type 2 Implementation
-**Problem:** Needed to track historical changes in dimension tables.  
-**Solution:** Implemented `add_scd2_columns()` function in `star_schema.py` to add `START_DATE`, `END_DATE`, and `IS_CURRENT` columns.
-
-## 🛠️ Technologies Used
-
-| Category | Technologies |
-|----------|--------------|
-| **Platform** | Databricks (Unity Catalog) |
-| **Languages** | Python, PySpark, SQL |
-| **Storage** | Delta Lake |
-| **Data Format** | CSV (source), Delta (gold/silver/bronze) |
-| **Version Control** | Git (GitHub) |
-| **Data Model** | Star Schema (Kimball) |
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Databricks workspace with Unity Catalog enabled
-- Catalog: `inv_risk_mgmt` (or your custom catalog)
-- Access to Databricks Volumes for CSV storage
-- Python 3.x with PySpark
-
-### Quick Start (Databricks)
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/mdmasumhowlader/etl-banking-analytics-databricks.git
-
-2. **Upload CSV files to Databricks Volumes:**
- - Path: /Volumes/inv_risk_mgmt/raw_data/csv/{load_date}/
- - Files: All table CSV files
-
-3. **Create Bronze tables:**
- - Run schema_definition/bronze_tables.sql in Databricks SQL
-
-4. **Run the ETL pipeline:**
-# Notebook 1: Load raw data
-%run ./data_processing/data_loading
-
-# Notebook 2: Transform to Silver
-%run ./data_processing/data_transformation
-
-# Notebook 3: Build Star Schema
-%run ./data_processing/star_schema
-
-5. **Verify data:**
-SELECT * FROM inv_risk_mgmt.gold.fact_financing_account LIMIT 10;
-
-## Unity Catalog
-```
-## 🏛️ Unity Catalog Structure
-
-### Bronze Layer — 11 Tables
-bronze/
-├── branches
-├── business_units
-├── cl_categories
-├── customer_types
-├── customers
-├── districts
-├── divisions
-├── financing_accounts
-├── financing_products
-├── industries
-└── thanas
-
-### Silver Layer — 11 Tables
-
-silver/
-├── branches
-├── business_units
-├── cl_categories
-├── customer_types
-├── customers
-├── districts
-├── divisions
-├── financing_accounts
-├── financing_products
-├── industries
-└── thanas
-
-### Gold Layer — Star Schema (6 Dims + 1 Fact)
-gold/
-├── dim_branch
-├── dim_business_unit
-├── dim_cl_category
-├── dim_customer
-├── dim_financing_product
-├── dim_industry
-└── fact_financing_account
 
 ### Relationship Diagram
 
@@ -286,6 +185,69 @@ Dimensional configurations
 
 Shared across all processing notebooks
 
+
+
+
+## 🐛 Challenges & Solutions
+
+### Challenge 1: Date/Time Format Parsing
+**Problem:** CSV files contained multiple date formats (`M/d/yyyy h:mm:ss a`, `M/d/yyyy h:mm:ss.SSSSSS a`).  
+**Solution:** Implemented custom timestamp parsing in `data_loading.py` using `F.to_timestamp()` with format string detection.
+
+### Challenge 2: Business Logic Centralization
+**Problem:** Business rules (NPL flag, utilization ratio, product categorization) were scattered across notebooks.  
+**Solution:** Centralized all business logic in `metadata.py` using a reusable `apply_business_logic()` function.
+
+### Challenge 3: SCD Type 2 Implementation
+**Problem:** Needed to track historical changes in dimension tables.  
+**Solution:** Implemented `add_scd2_columns()` function in `star_schema.py` to add `START_DATE`, `END_DATE`, and `IS_CURRENT` columns.
+
+## 🛠️ Technologies Used
+
+| Category | Technologies |
+|----------|--------------|
+| **Platform** | Databricks (Unity Catalog) |
+| **Languages** | Python, PySpark, SQL |
+| **Storage** | Delta Lake |
+| **Data Format** | CSV (source), Delta (gold/silver/bronze) |
+| **Version Control** | Git (GitHub) |
+| **Data Model** | Star Schema (Kimball) |
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Databricks workspace with Unity Catalog enabled
+- Catalog: `inv_risk_mgmt` (or your custom catalog)
+- Access to Databricks Volumes for CSV storage
+- Python 3.x with PySpark
+
+### Quick Start (Databricks)
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/mdmasumhowlader/etl-banking-analytics-databricks.git
+
+2. **Upload CSV files to Databricks Volumes:**
+ - Path: /Volumes/inv_risk_mgmt/raw_data/csv/{load_date}/
+ - Files: All table CSV files
+
+3. **Create Bronze tables:**
+ - Run schema_definition/bronze_tables.sql in Databricks SQL
+
+4. **Run the ETL pipeline:**
+# Notebook 1: Load raw data
+%run ./data_processing/data_loading
+
+# Notebook 2: Transform to Silver
+%run ./data_processing/data_transformation
+
+# Notebook 3: Build Star Schema
+%run ./data_processing/star_schema
+
+5. **Verify data:**
+SELECT * FROM inv_risk_mgmt.gold.fact_financing_account LIMIT 10;
+
+
 ## 🔗 Project Links
 GitHub Repository: mdmasumhowlader/etl-banking-analytics-databricks
 
@@ -299,6 +261,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 
 ⭐️ If you found this project helpful, please consider giving it a star on GitHub!
-Author: Md. Masum Howlader
-GitHub: mdmasumhowlader
-LinkedIn: md-masum-howlader
+**Author:** Md. Masum Howlader  
+**GitHub:** [mdmasumhowlader](https://github.com/mdmasumhowlader)  
+**LinkedIn:** [md-masum-howlader](https://www.linkedin.com/in/md-masum-howlader-062927220/)
