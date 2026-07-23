@@ -1,0 +1,111 @@
+{
+    "catalog": "inv_risk_mgmt",
+    "load_date": "2026-03-18",
+    "bronze_schema": "bronze",
+    "silver_schema": "silver",
+    "gold_schema": "gold",
+    "volume_path": "/Volumes/inv_risk_mgmt/raw_data/csv",
+    "tables": [
+        "DIVISIONS",
+        "DISTRICTS",
+        "THANAS",
+        "BRANCHES",
+        "BUSINESS_UNITS",
+        "CL_CATEGORIES",
+        "CUSTOMER_TYPES",
+        "INDUSTRIES",
+        "CUSTOMERS",
+        "FINANCING_PRODUCTS",
+        "FINANCING_ACCOUNTS"
+    ],
+    "primary_keys": {
+        "DIVISIONS": ["DIVISION_ID"],
+        "DISTRICTS": ["DISTRICT_ID"],
+        "THANAS": ["THANA_ID"],
+        "BRANCHES": ["BRANCH_ID"],
+        "BUSINESS_UNITS": ["BUSINESS_UNIT_ID"],
+        "CL_CATEGORIES": ["CL_CATEGORY_ID"],
+        "CUSTOMER_TYPES": ["CUSTOMER_TYPE_ID"],
+        "INDUSTRIES": ["INDUSTRY_ID"],
+        "CUSTOMERS": ["CUSTOMER_ID"],
+        "FINANCING_PRODUCTS": ["PRODUCT_ID"],
+        "FINANCING_ACCOUNTS": ["ACCOUNT_ID"]
+    },
+    "dimension_config": {
+        "dim_branch": {
+            "unknown": true,
+            "na": false,
+            "sk_col": "BRANCH_SK",
+            "nk_cols": ["BRANCH_ID"]
+        },
+        "dim_financing_product": {
+            "unknown": true,
+            "na": false,
+            "sk_col": "PRODUCT_SK",
+            "nk_cols": ["PRODUCT_ID"],
+            "column_rules": {
+                "INDUSTRY_ID": "null_to_na"
+            },
+            "column_overrides": {
+                "unknown": {
+                    "INDUSTRY_ID": -1
+                }
+            }
+        },
+        "dim_industry": {
+            "unknown": true,
+            "na": true,
+            "sk_col": "INDUSTRY_SK",
+            "nk_cols": ["INDUSTRY_ID"]
+        },
+        "dim_business_unit": {
+            "unknown": true,
+            "na": true,
+            "sk_col": "BUSINESS_UNIT_SK",
+            "nk_cols": ["BUSINESS_UNIT_ID"]
+        },
+        "dim_cl_category": {
+            "unknown": true,
+            "na": false,
+            "sk_col": "CL_CATEGORY_SK",
+            "nk_cols": ["CL_CATEGORY_ID"]
+        },
+        "dim_customer": {
+            "unknown": true,
+            "na": false,
+            "sk_col": "CUSTOMER_SK",
+            "nk_cols": ["CUSTOMER_ID"]
+        }
+    },
+    "table_metadata": {
+        "CUSTOMERS": {
+            "default_values": {
+                "CUSTOMER_RISK_LEVEL": "UNKNOWN"
+            },
+            "business_logic": ["high_risk_flag"]
+        },
+        "INDUSTRIES": {
+            "column_rules": {
+                "RISK_CATEGORY": "normalize_risk_category"
+            }
+        },
+        "FINANCING_ACCOUNTS": {
+            "default_values": {
+                "ACCOUNT_STATUS": "ACTIVE"
+            },
+            "column_rules": {
+                "OUTSTANDING_AMT": "non_negative"
+            },
+            "business_logic": ["npl_flag", "utilization"]
+        },
+        "FINANCING_PRODUCTS": {
+            "business_logic": ["product_category"]
+        },
+        "CUSTOMER_TYPES": {
+            "business_logic": ["customer_segment"]
+        },
+        "CL_CATEGORIES": {
+            "business_logic": ["loan_category_group"]
+        }
+    }
+}
