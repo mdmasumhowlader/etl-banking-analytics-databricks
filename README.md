@@ -185,9 +185,9 @@ Shared across all processing notebooks
 
 ## 📸 Screenshots
 ![Bronze Tables](./assets/images/bronze.png)
-![Sample Raw Data](./assets/images/sample-raw-data.png)
 ![Silver Tables](./assets/images/silver.png)
 ![Gold Tables](./assets/images/gold.png)
+![Sample Raw Data](./assets/images/sample-raw-data.png)
 
 ## 🐛 Challenges & Solutions
 
