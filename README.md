@@ -75,7 +75,6 @@ inv_risk_mgmt/ # Unity Catalog
 └── fact_financing_account
 ```
 
-
 ## 📊 Entity Relationship Diagram (ERD)
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────────────┐
@@ -184,7 +183,11 @@ Dimensional configurations
 Shared across all processing notebooks
 
 
-
+## 📸 Screenshots
+![Bronze Tables](./assets/images/bronze.png)
+![Sample Raw Data](./assets/images/sample-raw-data.png)
+![Silver Tables](./assets/images/silver.png)
+![Gold Tables](./assets/images/gold.png)
 
 ## 🐛 Challenges & Solutions
 
