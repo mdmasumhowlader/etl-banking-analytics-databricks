@@ -133,7 +133,52 @@ inv_risk_mgmt/ # Unity Catalog
 5. **Verify data:**
 SELECT * FROM inv_risk_mgmt.gold.fact_financing_account LIMIT 10;
 
+## Unity Catalog
+```
+## 🏛️ Unity Catalog Structure
 
+### Bronze Layer — 11 Tables
+bronze/
+├── branches
+├── business_units
+├── cl_categories
+├── customer_types
+├── customers
+├── districts
+├── divisions
+├── financing_accounts
+├── financing_products
+├── industries
+└── thanas
+
+### Silver Layer — 11 Tables
+
+silver/
+├── branches
+├── business_units
+├── cl_categories
+├── customer_types
+├── customers
+├── districts
+├── divisions
+├── financing_accounts
+├── financing_products
+├── industries
+└── thanas
+
+### Gold Layer — Star Schema (6 Dims + 1 Fact)
+gold/
+├── dim_branch
+├── dim_business_unit
+├── dim_cl_category
+├── dim_customer
+├── dim_financing_product
+├── dim_industry
+└── fact_financing_account
+
+### Relationship Diagram
+
+```
 ## 📊 Entity Relationship Diagram (ERD)
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────────────┐
@@ -168,6 +213,8 @@ SELECT * FROM inv_risk_mgmt.gold.fact_financing_account LIMIT 10;
 │                            └──────────────────┘                                     │ │
 └─────────────────────────────────────────────────────────────────────────────────────┘ │
 ```
+## Data Flow Diagram
+![Data Flow Diagram](./assets/images/data-flow-diagram.png)
 
 ## Data Lineage
 ```
