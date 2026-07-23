@@ -75,9 +75,7 @@ inv_risk_mgmt/ # Unity Catalog
 └── fact_financing_account
 ```
 
-### Relationship Diagram
 
-```
 ## 📊 Entity Relationship Diagram (ERD)
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────────────────┐
